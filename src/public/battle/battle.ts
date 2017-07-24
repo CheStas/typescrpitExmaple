@@ -1,4 +1,4 @@
-import {Fighter} from './fighter';
+import {Fighter, IFighter} from './fighter';
 import {ImprovedFighter} from './improvedFighter';
 
 export interface IBattle {
@@ -10,7 +10,7 @@ export class Battle implements IBattle {
         this.initializeBattle();
     }
 
-    private _fight(fighter: Fighter, improvedFighter: ImprovedFighter, ...point): string {
+    private _fight(fighter: IFighter, improvedFighter: IFighter, ...point): string {
         let damage;
         if (point.length === 1) {
             damage = point[0].split(' ');

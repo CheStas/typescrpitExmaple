@@ -4,6 +4,7 @@ export interface IFighter {
     health: number;
     setDamage: (damage: number) => string;
     hit: (enemy: IFighter, point: number) => string;
+    doubleHit?: (enemy: IFighter, point: number) => string;
 }
 
 export class Fighter implements IFighter {
