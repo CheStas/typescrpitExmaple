@@ -19,7 +19,7 @@ export class Fighter implements IFighter {
 
     setDamage(damage) {
         this.health = this.health - damage;
-        return `hit!! ${this.name}'s health is ${this.health}`
+        return `hit!! ${this.name}'s health is ${this.health > 0 ? this.health : 0}`
     }
 
     hit(enemy, point) {

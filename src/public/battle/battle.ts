@@ -33,13 +33,11 @@ export class Battle implements IBattle {
                 } else {
                     this._insertInfo(improvedFighter.doubleHit(fighter, item))
 
-
                     if (fighter.health <= 0) {
                         fighter.health = 0;
                         this._insertInfo(`${fighter.name} has died, ${improvedFighter.name} has won!`)
                         return false;
                     }
-
                 }
             }
             return true;
@@ -51,23 +49,30 @@ export class Battle implements IBattle {
 
     initializeBattle() {
         const startButton = document.getElementById('start') as HTMLButtonElement;
-        const fighterName = document.getElementById('fighter1-name') as HTMLButtonElement;
-        const fighterPower = document.getElementById('fighter1-power') as HTMLButtonElement;
-        const fighterHealth = document.getElementById('fighter1-health') as HTMLButtonElement;
-        const fighterImprovedName = document.getElementById('fighter2-name') as HTMLButtonElement;
-        const fighterImprovedPower = document.getElementById('fighter2-power') as HTMLButtonElement;
-        const fighterImprovedHealth = document.getElementById('fighter2-health') as HTMLButtonElement;
-        const damage = document.getElementById('damage') as HTMLButtonElement;
+        const fighterName = document.getElementById('fighter1-name') as HTMLInputElement;
+        const fighterPower = document.getElementById('fighter1-power') as HTMLInputElement;
+        const fighterHealth = document.getElementById('fighter1-health') as HTMLInputElement;
+        const fighterImprovedName = document.getElementById('fighter2-name') as HTMLInputElement;
+        const fighterImprovedPower = document.getElementById('fighter2-power') as HTMLInputElement;
+        const fighterImprovedHealth = document.getElementById('fighter2-health') as HTMLInputElement;
+        const damage = document.getElementById('damage') as HTMLInputElement;
 
         startButton.addEventListener('click', () => {
-            let fighter = new Fighter(fighterName.value, fighterPower.value, fighterHealth.value)
-            let improvedFighter = new ImprovedFighter(fighterImprovedName.value,  fighterImprovedPower.value,  fighterImprovedHealth.value)
-            this._insertInfo(this._fight(fighter, improvedFighter, damage.value))
+
+            if (fighterName.value.length !== 0 && fighterPower.value.length !== 0 && fighterHealth.value.length !== 0 && fighterImprovedName.value.length !== 0 && fighterImprovedPower.value.length !== 0 && fighterImprovedHealth.value.length !== 0 && damage.value.length !== 0) {
+
+                let fighter = new Fighter(fighterName.value, fighterPower.value, fighterHealth.value)
+                let improvedFighter = new ImprovedFighter(fighterImprovedName.value,  fighterImprovedPower.value,  fighterImprovedHealth.value)
+
+                this._insertInfo(this._fight(fighter, improvedFighter, damage.value))
+            } else {
+                alert('fill in all the filed')
+            }
         });
     }
 
     private _insertInfo(text:string): void {
-        const result = document.getElementById('result') as HTMLButtonElement;
+        const result = document.getElementById('result') as HTMLElement;
         let li = document.createElement('li')
         li.innerHTML = text;
         result.appendChild(li);

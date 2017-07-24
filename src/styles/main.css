@@ -2,3 +2,27 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.wrap {
+    margin: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+}
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    padding: 5px;
+}
+#start {
+    width: 193px;
+    padding: 10px;
+    cursor: pointer;
+}
